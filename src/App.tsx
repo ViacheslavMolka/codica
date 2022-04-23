@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Box } from '@mui/system';
+
+import WeatherPage from './components/WeatherPage/WeatherPage';
+import CustomizedSnackbars from './components/SnackBar/SneckBar';
+import { useAppDispatch } from './store';
+import { getWeather } from './store/weather/thunk';
 
 function App() {
+  const dispatch = useAppDispatch();
+
+  React.useEffect(() => {
+    const items = {...localStorage};
+    for (const a in items) {
+      dispatch(getWeather(a));
+    }
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Box>
+      <WeatherPage />
+      <CustomizedSnackbars />
+    </Box>
   );
 }
 
