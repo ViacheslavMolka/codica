@@ -13,6 +13,7 @@ import { Bar } from 'react-chartjs-2';
 import { toСelsius } from '../../helpers';
 
 interface IWeatherBarProps {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   temp: Array<any>;
 }
 
