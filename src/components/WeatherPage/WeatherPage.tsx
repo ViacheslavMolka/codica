@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { Box } from '@mui/system';
 
@@ -19,7 +20,6 @@ const WeatherPage: React.FC = () => {
   const handleSubmit = () => {
     dispatch(getWeather(city));
   };
-
   return (
     <Box>
       <Box sx={{ display: 'flex', justifyContent: 'center' }}>

@@ -11,14 +11,33 @@ export interface WeatherState {
 	error: string;
 }
 
+export interface IWeather {
+  clouds: {
+    all: number,
+  };
+  main: {
+    feels_like: number,
+    humidity: number,
+    temp: number,
+  };
+  name: string;
+  sys: {
+    sunrise: number,
+    sunset: number,
+  };
+  wind: {
+    speed: number,
+  };
+}
+
 export interface GetWeatherAction {
   type: WeatherActionEnum.GET_WEATHER;
-  payload: any;
+  payload: IWeather;
 }
 
 export interface UpdateGetWeatherAction {
   type: WeatherActionEnum.UPDATE_WEATHER;
-  payload: any;
+  payload: IWeather;
 }
 
 export interface HourlyGetWeatherAction {
