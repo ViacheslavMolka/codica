@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import * as reactRedux from 'react-redux';
 import renderer from 'react-test-renderer';
@@ -9,15 +10,18 @@ import WeatherCard from '../WeatherCard';
 
 const mockedProps = {
   info: {
+    clouds: {
+      all: 23,
+    },
     name: 'Kyiv',
     main: {
-      temp: '283',
-      feels_like: '287',
+      temp: 283,
+      feels_like: 287,
       humidity: 60,
-  },
+    },
     wind: {
       speed: 7.7
-  },
+    },
     sys: {
       sunset: 123123131,
       sunrise: 123123131,

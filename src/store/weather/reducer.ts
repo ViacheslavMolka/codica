@@ -1,4 +1,5 @@
-import { WeatherActionEnum, WeatherState, WeatherActions } from './actionTypes';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { WeatherActionEnum, WeatherState, WeatherActions, IWeather } from './actionTypes';
 
 const initialState: WeatherState = {
 	weather: [],
@@ -9,14 +10,14 @@ const initialState: WeatherState = {
 export default function weather(state = initialState, action: WeatherActions): WeatherState {
 	switch (action.type) {
 		case WeatherActionEnum.GET_WEATHER: {
-			const isHas: Array<object> | any = state.weather.find((item: any) => item.name === action.payload.name);
+			const isHas: IWeather | any = state.weather.find((item: any) => item.name === action.payload.name);
 			const checkWeather = isHas ? [] : [action.payload];
       return {
 				...state,
         weather: [...state.weather, ...checkWeather],
       }}
 		case WeatherActionEnum.UPDATE_WEATHER: {
-			const newWeather: Array<object> = state.weather.map((item: any) => {
+			const newWeather: Array<IWeather> = state.weather.map((item: any) => {
 				if (item.name === action.payload.name) {
 					return action.payload
 				}

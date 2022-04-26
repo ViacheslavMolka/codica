@@ -12,8 +12,13 @@ import { useAppDispatch } from '../../store';
 import { hourlyWeather, updateWeather } from '../../store/weather/thunk';
 import { useTypedSelector } from '../../hooks/useTypedSelector';
 import useStyles from './styles';
+import { IWeather } from '../../store/weather/actionTypes';
 
-const WeatherCard: React.FC<any> = ({ info }) => {
+interface IWeatherCardProps {
+  info: IWeather;
+}
+
+const WeatherCard: React.FC<IWeatherCardProps> = ({ info }) => {
   const [isDetails, setIsDetails] = React.useState(true);
   const dispatch = useAppDispatch();
   const classes = useStyles();
@@ -23,6 +28,7 @@ const WeatherCard: React.FC<any> = ({ info }) => {
     dispatch(hourlyWeather(info.name));
   }, [info.name]);
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const temp: any = hourly.length && hourly.find((item: any) => item?.city?.name === info?.name);
   
   return (
